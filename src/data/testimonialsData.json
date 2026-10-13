@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "name": "Awlad Hossin",
+        "role": "Senior Product Designer",
+        "review": "The delivery service is really fast and reliable. I can easily track my parcel and always know where it is."
+    },
+    {
+        "id": 2,
+        "name": "Rasel Ahmed",
+        "role": "CTO",
+        "review": "I have used this service several times and every delivery arrived safely and on time. Highly recommended."
+    },
+    {
+        "id": 3,
+        "name": "Nasir Uddin",
+        "role": "CEO",
+        "review": "The live tracking feature makes the whole delivery process much easier. I always know the current status of my parcel."
+    },
+    {
+        "id": 4,
+        "name": "Sadia Rahman",
+        "role": "Business Owner",
+        "review": "Their delivery service has made my online business much easier to manage. My customers are also very happy."
+    },
+    {
+        "id": 5,
+        "name": "Tanvir Hasan",
+        "role": "Software Engineer",
+        "review": "Very smooth experience from booking to delivery. The support team is also responsive and helpful."
+    },
+    {
+        "id": 6,
+        "name": "Nusrat Jahan",
+        "role": "Marketing Executive",
+        "review": "I really like how simple the parcel booking process is. Everything is clear and easy to understand."
+    },
+    {
+        "id": 7,
+        "name": "Mehedi Hasan",
+        "role": "Entrepreneur",
+        "review": "Fast delivery and excellent customer service. This is now my preferred parcel delivery service."
+    },
+    {
+        "id": 8,
+        "name": "Mim Akter",
+        "role": "Content Creator",
+        "review": "My packages always arrive in good condition. The tracking system is especially useful for me."
+    },
+    {
+        "id": 9,
+        "name": "Sakib Khan",
+        "role": "Business Consultant",
+        "review": "The service is dependable and the delivery updates are very accurate. Great experience overall."
+    },
+    {
+        "id": 10,
+        "name": "Fahim Rahman",
+        "role": "Freelancer",
+        "review": "I send parcels regularly and this service has saved me a lot of time. The whole process is very convenient."
+    },
+    {
+        "id": 11,
+        "name": "Jannatul Ferdous",
+        "role": "Teacher",
+        "review": "The delivery was faster than I expected and the parcel arrived safely. I will definitely use the service again."
+    },
+    {
+        "id": 12,
+        "name": "Arif Hossain",
+        "role": "Startup Founder",
+        "review": "Excellent delivery experience. The service is fast, secure, and the tracking feature gives great peace of mind."
+    }
+]

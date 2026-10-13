@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "question": "How does the parcel delivery service work?",
+    "answer": "Our parcel delivery service makes shipping simple and convenient. You can book a delivery, provide the pickup and delivery details, and track your parcel in real-time until it reaches its destination."
+  },
+  {
+    "id": 2,
+    "question": "How can I track my parcel?",
+    "answer": "After your parcel is booked, you will receive a tracking ID. Use this tracking ID to check the current location and delivery status of your parcel at any time."
+  },
+  {
+    "id": 3,
+    "question": "How long does delivery usually take?",
+    "answer": "Delivery time depends on the destination and delivery type. Most local deliveries are completed within the estimated delivery time shown during the booking process."
+  },
+  {
+    "id": 4,
+    "question": "Is my parcel safe during delivery?",
+    "answer": "Yes. We carefully handle parcels throughout the delivery process and follow proper safety procedures to ensure your package reaches its destination securely."
+  },
+  {
+    "id": 5,
+    "question": "Can I cancel my delivery after booking?",
+    "answer": "Yes, you may be able to cancel a delivery depending on its current status. Please contact our support team as soon as possible for assistance."
+  },
+  {
+    "id": 6,
+    "question": "How can I contact customer support?",
+    "answer": "You can contact our customer support team through the support center. Our team is available to help you with delivery, tracking, booking, and other questions."
+  }
+]

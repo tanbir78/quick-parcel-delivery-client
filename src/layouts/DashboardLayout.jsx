@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router';
 import QuickLogo from '../pages/shared/QuickLogo';
+import { FaHouse, FaBoxOpen, FaMoneyBillTransfer, FaMapLocationDot, FaRegUser } from "react-icons/fa6";
+import { FaRoute } from 'react-icons/fa';
 
 const DashboardLayout = () => {
     return (
@@ -37,8 +39,48 @@ const DashboardLayout = () => {
                 <ul className="menu bg-base-200 min-h-full w-80 p-4">
                     {/* Sidebar content here */}
                     <QuickLogo></QuickLogo>
-                    <li><a>Home</a></li>
-                    <li><NavLink to='/dashboard/myParcels'>My Parcels</NavLink></li>
+
+                    <li>
+                        <NavLink to="/">
+                            <FaHouse className="inline mr-2 text-blue-500 text-xl" />
+                            Home
+                        </NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink to="/dashboard/myParcels">
+                            <FaBoxOpen className="inline mr-2 text-orange-500 text-xl" />
+                            My Parcels
+                        </NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink to="/dashboard/paymentHistory">
+                            <FaMoneyBillTransfer className="inline mr-2 text-emerald-500 text-xl" />
+                            Payment History
+                        </NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink to="/dashboard/track">
+                            <FaMapLocationDot className="inline mr-2 text-purple-500 text-xl" />
+                            Track a Parcel
+                        </NavLink>
+                    </li>
+
+                    {/* <li>
+                        <NavLink to="/dashboard/update-tracking">
+                            <FaRoute className="inline mr-2 text-blue-500 text-xl" />
+                            Update Tracking
+                        </NavLink>
+                    </li> */}
+
+                    <li>
+                        <NavLink to="/dashboard/profile">
+                            <FaRegUser className="inline mr-2 text-pink-500 text-xl" />
+                            Update Profile
+                        </NavLink>
+                    </li>
                 </ul>
             </div>
         </div>

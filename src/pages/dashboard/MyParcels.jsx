@@ -4,11 +4,13 @@ import { useQueryClient, useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from "../../hocks/UseAxiosSecure";
 import { FaCreditCard, FaEye, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
 
 const MyParcels = () => {
     const { user } = UseAuth();
     const axiosSecure = UseAxiosSecure();
     const queryClient = useQueryClient();
+    const navigate = useNavigate();
 
     const {
         data: parcels = [],
@@ -44,6 +46,9 @@ const MyParcels = () => {
     // if (isError) {
     //     return <div>Failed to load parcels.</div>;
     // }
+    const handlePay = (id) => {
+        navigate(`/dashboard/payment/${id}`);
+    }
 
     const handleDelete = (parcel) => {
         Swal.fire({
@@ -180,8 +185,7 @@ const MyParcels = () => {
                                         {parcel.paymentStatus !== "paid" && (
                                             <button
                                                 className="btn btn-sm btn-success"
-                                                onClick={() =>
-                                                    console.log("Pay", parcel)
+                                                onClick={() => handlePay(parcel._id)
                                                 }
                                             >
                                                 <FaCreditCard />

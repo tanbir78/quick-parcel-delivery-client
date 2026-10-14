@@ -70,7 +70,7 @@ const DashboardLayout = () => {
 
                     {/* <li>
                         <NavLink to="/dashboard/update-tracking">
-                            <FaRoute className="inline mr-2 text-blue-500 text-xl" />
+                            <FaRoute className="inline  mr-2 text-blue-500 text-xl" />
                             Update Tracking
                         </NavLink>
                     </li> */}

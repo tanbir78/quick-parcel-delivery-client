@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, Outlet } from 'react-router';
 import QuickLogo from '../pages/shared/QuickLogo';
 import { FaHouse, FaBoxOpen, FaMoneyBillTransfer, FaMapLocationDot, FaRegUser } from "react-icons/fa6";
-import { FaRoute } from 'react-icons/fa';
+import { FaMotorcycle, FaRoute, FaUserClock } from 'react-icons/fa';
 
 const DashboardLayout = () => {
     return (
@@ -74,6 +74,20 @@ const DashboardLayout = () => {
                             Update Tracking
                         </NavLink>
                     </li> */}
+
+                    <li>
+                        <NavLink to="/dashboard/active-riders">
+                            <FaMotorcycle className="inline mr-2 text-green-500 text-xl" />
+                            Active Riders
+                        </NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink to="/dashboard/pending-riders">
+                            <FaUserClock className="inline mr-2 text-yellow-500 text-xl" />
+                            Pending Riders
+                        </NavLink>
+                    </li>
 
                     <li>
                         <NavLink to="/dashboard/profile">

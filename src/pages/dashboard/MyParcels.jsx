@@ -12,32 +12,27 @@ const MyParcels = () => {
     const queryClient = useQueryClient();
     const navigate = useNavigate();
 
-    const {
-        data: parcels = [],
-        // isLoading,
-        // isError,
-    } = useQuery({
-        queryKey: ["my-parcels", user?.email],
+    // const { data: parcels = [], // isLoading, // isError,
+    // } = useQuery({
+    //     queryKey: ["my-parcels", user?.email],
+    //     enabled: !!user?.email,
+    //     queryFn: async () => {
+    //         // Get all parcels
+    //         const res = await axiosSecure.get("/parcels");
 
-        enabled: !!user?.email,
+    //         console.log("Logged in user:", user.email);
+    //         console.log("All parcels:", res.data);
 
-        queryFn: async () => {
-            // Get all parcels
-            const res = await axiosSecure.get("/parcels");
+    //         // Get only current user's parcels
+    //         const myParcels = res.data.data.filter(
+    //             (parcel) => parcel.createdByEmail === user.email
+    //         );
 
-            console.log("Logged in user:", user.email);
-            console.log("All parcels:", res.data);
+    //         console.log("My parcels:", myParcels);
 
-            // Get only current user's parcels
-            const myParcels = res.data.data.filter(
-                (parcel) => parcel.createdByEmail === user.email
-            );
-
-            console.log("My parcels:", myParcels);
-
-            return myParcels;
-        },
-    });
+    //         return myParcels;
+    //     },
+    // });
 
     // if (isLoading) {
     //     return <div>Loading...</div>;
@@ -46,6 +41,14 @@ const MyParcels = () => {
     // if (isError) {
     //     return <div>Failed to load parcels.</div>;
     // }
+    const { data: parcels = [], refetch } = useQuery({
+        queryKey: ['my-parcels', user.email],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/parcels?email=${user.email}`,);
+            return res.data.data;
+        }
+    })
+
     const handlePay = (id) => {
         navigate(`/dashboard/payment/${id}`);
     }

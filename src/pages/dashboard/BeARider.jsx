@@ -75,11 +75,17 @@ const BearRider = () => {
             email: user?.email || "",
             status: "pending",
             appliedAt: new Date().toISOString(),
-        };
 
+        };
+        // console.log("Form data:", data);
+        // console.log("Authenticated user:", user);
+        // console.log("User name:", user?.displayName);
+        // console.log("User email:", user?.email);
         try {
             setSubmitting(true);
-
+            // console.log("Sending application:", application);
+            // console.log("User:", user);
+            
             // Backend endpoint for rider applications.
             const response = await axiosSecure.post("/riderApplications", application);
 

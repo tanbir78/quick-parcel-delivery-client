@@ -16,6 +16,9 @@ import UpdateTracking from "../pages/dashboard/UpdateTracking";
 import BeARider from "../pages/dashboard/BeARider";
 import PendingRiders from "../pages/dashboard/PendingRiders";
 import ActiveRiders from "../pages/dashboard/ActiveRiders";
+import MakeAdmin from "../pages/dashboard/MakeAdmin";
+import Forbidden from "../pages/Forbidden";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
     {
@@ -28,6 +31,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'coverage', Component: Coverage
+            },
+            {
+                path: "forbidden", Component: Forbidden
             },
             {
                 path: 'beARider',
@@ -80,11 +86,21 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'pending-riders',
-                Component: PendingRiders
+                element: <AdminRoute>
+                    <PendingRiders></PendingRiders>
+                </AdminRoute>
             },
             {
                 path: 'active-riders',
-                Component: ActiveRiders
+                element: <AdminRoute>
+                    <ActiveRiders></ActiveRiders>
+                </AdminRoute>
+            },
+            {
+                path: "make-admin",
+                element: <AdminRoute>
+                    <MakeAdmin></MakeAdmin>
+                </AdminRoute>
             },
             // {
             //     path: "update-tracking",

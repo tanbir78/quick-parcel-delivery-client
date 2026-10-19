@@ -1,4 +1,3 @@
-
 import { useCallback, useEffect, useState } from "react";
 import {
     FaEye,
@@ -45,7 +44,7 @@ const PendingRiders = () => {
     //     }
     // })
 
-    const handleDecision = async (rider, status) => {
+    const handleDecision = async (rider, status, email) => {
         const isAccept = status === "active";
 
         const confirmation = await Swal.fire({
@@ -67,7 +66,7 @@ const PendingRiders = () => {
 
             await axiosSecure.patch(
                 `/riderApplications/${rider._id}/status`,
-                { status }
+                { status, email }
             );
 
             setRiders((previous) =>
@@ -216,7 +215,7 @@ const PendingRiders = () => {
                                             <button
                                                 className="btn btn-success btn-sm"
                                                 disabled={processingId !== null}
-                                                onClick={() => handleDecision(rider, "active")}
+                                                onClick={() => handleDecision(rider, "active", rider.email)}
                                                 title="Accept application"
                                             >
                                                 <FaCheck />
@@ -225,7 +224,7 @@ const PendingRiders = () => {
                                             <button
                                                 className="btn btn-error btn-sm"
                                                 disabled={processingId !== null}
-                                                onClick={() => handleDecision(rider, "rejected")}
+                                                onClick={() => handleDecision(rider, "rejected", rider.email)}
                                                 title="Reject application"
                                             >
                                                 <FaTimes />

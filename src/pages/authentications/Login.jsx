@@ -153,7 +153,7 @@ const Login = () => {
             {/* Register */}
             <p className="text-xs text-gray-500 mt-2">
                 Don't have an account?{" "}
-                <Link
+                <Link state={{ from }}
                     to="/register"
                     className="text-[#91B51C] hover:underline font-medium"
                 >

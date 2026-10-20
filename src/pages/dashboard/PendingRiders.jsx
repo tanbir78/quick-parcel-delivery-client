@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import UseAxiosSecure from "../../hocks/UseAxiosSecure";
 
 const PendingRiders = () => {
+    // console.log("PendingRiders rendered");
     const axiosSecure = UseAxiosSecure();
 
     const [riders, setRiders] = useState([]);
@@ -20,6 +21,7 @@ const PendingRiders = () => {
         try {
             setLoading(true);
             const res = await axiosSecure.get("/riderApplications/pending");
+            // console.log("Pending riders response:", res.status, res.data);
             setRiders(Array.isArray(res.data) ? res.data : []);
         } catch (error) {
             Swal.fire(
@@ -33,6 +35,7 @@ const PendingRiders = () => {
     }, [axiosSecure]);
 
     useEffect(() => {
+        //  console.log("PendingRiders component mounted");
         fetchPendingRiders();
     }, [fetchPendingRiders]);
 

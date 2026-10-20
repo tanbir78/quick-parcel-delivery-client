@@ -91,6 +91,12 @@ const DashboardLayout = () => {
                     {!roleLoading && role === "admin" &&
                         <>
                             <li>
+                                <NavLink to="/dashboard/assign-riders">
+                                    <FaMotorcycle className="inline mr-2 text-yellow-500 text-xl" />
+                                    Assign Riders
+                                </NavLink>
+                            </li>
+                            <li>
                                 <NavLink to="/dashboard/active-riders">
                                     <FaMotorcycle className="inline mr-2 text-green-500 text-xl" />
                                     Active Riders

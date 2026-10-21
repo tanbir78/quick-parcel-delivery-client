@@ -81,7 +81,7 @@ const Register = () => {
                 </h1>
 
                 <p className="text-xs sm:text-sm text-gray-600 mt-1">
-                    Register with ZapShift
+                    Register with Quick
                 </p>
             </div>
 

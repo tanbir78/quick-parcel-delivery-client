@@ -132,7 +132,8 @@ const BearRider = () => {
     };
 
     return (
-        <div className="max-w-5xl mx-auto p-4 md:p-6">
+        <div className="min-h-screen bg-base-200 px-3 py-6 text-base-content sm:px-5 md:p-8">
+            <div className="mx-auto max-w-5xl">
             <div className="card bg-base-100 shadow-xl">
                 <div className="card-body">
                     <div className="mb-4">
@@ -161,7 +162,7 @@ const BearRider = () => {
                                         type="text"
                                         value={user?.displayName || ""}
                                         readOnly
-                                        className="input input-bordered w-full"
+                                        className="input input-bordered w-full bg-base-100 text-base-content border-base-300 placeholder:text-base-content/50 focus:border-primary focus:outline-offset-0"
                                     />
                                 </div>
 
@@ -173,7 +174,7 @@ const BearRider = () => {
                                         type="email"
                                         value={user?.email || ""}
                                         readOnly
-                                        className="input input-bordered w-full"
+                                        className="input input-bordered w-full bg-base-100 text-base-content border-base-300 placeholder:text-base-content/50 focus:border-primary focus:outline-offset-0"
                                     />
                                 </div>
 
@@ -185,7 +186,7 @@ const BearRider = () => {
                                         type="number"
                                         min="18"
                                         placeholder="Enter your age"
-                                        className="input input-bordered w-full"
+                                        className="input input-bordered w-full bg-base-100 text-base-content border-base-300 placeholder:text-base-content/50 focus:border-primary focus:outline-offset-0"
                                         {...register("age", {
                                             required: "Age is required",
                                             valueAsNumber: true,
@@ -213,7 +214,7 @@ const BearRider = () => {
                                     <input
                                         type="tel"
                                         placeholder="Enter your phone number"
-                                        className="input input-bordered w-full"
+                                        className="input input-bordered w-full bg-base-100 text-base-content border-base-300 placeholder:text-base-content/50 focus:border-primary focus:outline-offset-0"
                                         {...register("phone", {
                                             required: "Phone number is required",
                                             pattern: {
@@ -238,7 +239,7 @@ const BearRider = () => {
                                     <input
                                         type="text"
                                         placeholder="Enter your NID number"
-                                        className="input input-bordered w-full"
+                                        className="input input-bordered w-full bg-base-100 text-base-content border-base-300 placeholder:text-base-content/50 focus:border-primary focus:outline-offset-0"
                                         {...register("nid", {
                                             required: "NID number is required",
                                             minLength: {
@@ -263,7 +264,7 @@ const BearRider = () => {
                                     <input
                                         type="tel"
                                         placeholder="Emergency contact number"
-                                        className="input input-bordered w-full"
+                                        className="input input-bordered w-full bg-base-100 text-base-content border-base-300 placeholder:text-base-content/50 focus:border-primary focus:outline-offset-0"
                                         {...register("emergencyContact", {
                                             required: "Emergency contact is required",
                                         })}
@@ -291,7 +292,7 @@ const BearRider = () => {
                                         <span className="label-text">Region</span>
                                     </label>
                                     <select
-                                        className="select select-bordered w-full"
+                                        className="select select-bordered w-full bg-base-100 text-base-content border-base-300 focus:border-primary focus:outline-offset-0 disabled:bg-base-200 disabled:text-base-content/50"
                                         {...register("region", {
                                             required: "Please select a region",
                                         })}
@@ -315,7 +316,7 @@ const BearRider = () => {
                                         <span className="label-text">District</span>
                                     </label>
                                     <select
-                                        className="select select-bordered w-full"
+                                        className="select select-bordered w-full bg-base-100 text-base-content border-base-300 focus:border-primary focus:outline-offset-0 disabled:bg-base-200 disabled:text-base-content/50"
                                         disabled={!selectedRegion}
                                         {...register("district", {
                                             required: "Please select a district",
@@ -342,7 +343,7 @@ const BearRider = () => {
                                     <textarea
                                         rows={3}
                                         placeholder="House, road, area, and other address details"
-                                        className="textarea textarea-bordered w-full"
+                                        className="textarea textarea-bordered w-full bg-base-100 text-base-content border-base-300 placeholder:text-base-content/50 focus:border-primary focus:outline-offset-0"
                                         {...register("address", {
                                             required: "Current address is required",
                                         })}
@@ -372,7 +373,7 @@ const BearRider = () => {
                                     <input
                                         type="text"
                                         placeholder="e.g. Honda, Yamaha, Bajaj"
-                                        className="input input-bordered w-full"
+                                        className="input input-bordered w-full bg-base-100 text-base-content border-base-300 placeholder:text-base-content/50 focus:border-primary focus:outline-offset-0"
                                         {...register("bikeBrand", {
                                             required: "Bike brand is required",
                                         })}
@@ -393,7 +394,7 @@ const BearRider = () => {
                                     <input
                                         type="text"
                                         placeholder="Enter registration number"
-                                        className="input input-bordered w-full"
+                                        className="input input-bordered w-full bg-base-100 text-base-content border-base-300 placeholder:text-base-content/50 focus:border-primary focus:outline-offset-0"
                                         {...register("bikeRegistrationNumber", {
                                             required: "Registration number is required",
                                         })}
@@ -412,7 +413,7 @@ const BearRider = () => {
                                         </span>
                                     </label>
                                     <select
-                                        className="select select-bordered w-full"
+                                        className="select select-bordered w-full bg-base-100 text-base-content border-base-300 focus:border-primary focus:outline-offset-0 disabled:bg-base-200 disabled:text-base-content/50"
                                         {...register("experience", {
                                             required: "Please select your experience",
                                         })}
@@ -455,6 +456,7 @@ const BearRider = () => {
                         </button>
                     </form>
                 </div>
+            </div>
             </div>
         </div>
     );

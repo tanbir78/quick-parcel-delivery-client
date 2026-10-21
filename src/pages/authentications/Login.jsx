@@ -34,7 +34,7 @@ const Login = () => {
                 </h1>
 
                 <p className="text-xs sm:text-sm text-gray-600 mt-1">
-                    Login with ZapShift
+                    Login with Quick
                 </p>
             </div>
 
@@ -169,62 +169,3 @@ const Login = () => {
 };
 
 export default Login;
-
-// import React from 'react';
-// import { useForm } from 'react-hook-form';
-// import { Link } from 'react-router';
-// import SocialLogin from './SocialLogin';
-// import UseAuth from '../../hocks/UseAuth';
-
-// const Login = () => {
-//     const { signInUser } = UseAuth();
-//     const { register, handleSubmit, formState: { errors } } = useForm();
-
-//     const onSubmit = data => {
-//         console.log(data);
-//         signInUser(data.email, data.password)
-//             .then((result) => {
-//                 console.log("Login successful:", result.user);
-//             })
-//             .catch((error) => {
-//                 console.log(error);
-//             });
-//     }
-
-//     return (
-//         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-//             <div className="card-body">
-
-//                 <h1 className="text-5xl font-bold">Please Login!</h1>
-//                 <form onSubmit={handleSubmit(onSubmit)}>
-//                     <fieldset className="fieldset">
-
-//                         <label className="label">Email</label>
-//                         <input type="email" {...register('mail')} className="input" placeholder="Email" />
-
-//                         <label className="label">Password</label>
-//                         <input type="password" {...register('password', {
-//                             required: true,
-//                             minLength: 6
-//                         })}
-//                             className="input" placeholder="Password" />
-//                         {
-//                             errors.password?.type === 'required' && <p
-//                                 className='text-red-500'>Password is required</p>
-//                         }
-//                         {
-//                             errors.password?.type === 'minLength' && <p
-//                                 className='text-red-500'>Password must be 6 characters or longer</p>
-//                         }
-//                         <div><a className="link link-hover">Forgot password?</a></div>
-//                         <button className="btn btn-primary mt-4">Login</button>
-//                     </fieldset>
-//                     <p><small>Not Register? <Link className='btn btn-link' to='/register' >Register</Link></small></p>
-//                 </form>
-//                 <SocialLogin></SocialLogin>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default Login;

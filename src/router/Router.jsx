@@ -26,6 +26,8 @@ import RiderRoute from "./RiderRoute";
 import MyEarning from "../pages/dashboard/MyEarning";
 import DashboardHome from "../layouts/DashboardHome";
 import UserRoute from "./UserRoute";
+import AboutUs from "../pages/home/AboutUs";
+import UpdateProfile from "../pages/dashboard/UpdateProfile";
 
 export const router = createBrowserRouter([
     {
@@ -38,6 +40,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'coverage', Component: Coverage
+            },
+            {
+                path: 'about', Component: AboutUs
             },
             {
                 path: "forbidden", Component: Forbidden
@@ -98,6 +103,10 @@ export const router = createBrowserRouter([
             {
                 path: 'track',
                 Component: TrackParcel
+            },
+            {
+                path: 'profile',
+                Component: UpdateProfile
             },
 
             // rider only routes

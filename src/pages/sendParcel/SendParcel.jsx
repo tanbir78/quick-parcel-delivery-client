@@ -297,6 +297,12 @@ const SendParcel = () => {
         };
 
 
+        const activeTheme = document.documentElement.getAttribute("data-theme") || "light";
+        const isDarkTheme = ["dark", "night", "forest", "business", "black", "dim", "sunset"].includes(activeTheme);
+        const popupBackground = isDarkTheme ? "#1f2937" : "#ffffff";
+        const popupText = isDarkTheme ? "#f3f4f6" : "#063B3D";
+        const mutedText = isDarkTheme ? "#cbd5e1" : "#6b7280";
+
         Swal.fire({
             title: "Review Your Parcel",
 
@@ -319,13 +325,13 @@ const SendParcel = () => {
                     ">
 
                         <span style="
-                            color: #6b7280;
+                            color: ${mutedText};
                         ">
                             Parcel Type
                         </span>
 
                         <strong style="
-                            color: #063B3D;
+                            color: ${popupText};
                         ">
                             ${data.parcelType === "document"
                     ? "Document"
@@ -351,13 +357,13 @@ const SendParcel = () => {
                                 ">
 
                                     <span style="
-                                        color: #6b7280;
+                                        color: ${mutedText};
                                     ">
                                         Parcel Weight
                                     </span>
 
                                     <strong style="
-                                        color: #063B3D;
+                                        color: ${popupText};
                                     ">
                                         ${Number(data.weight).toFixed(
                         2
@@ -383,7 +389,7 @@ const SendParcel = () => {
                     ">
 
                         <span style="
-                            color: #6b7280;
+                            color: ${mutedText};
                         ">
                             ${data.parcelType === "document"
                     ? "Document Delivery"
@@ -392,7 +398,7 @@ const SendParcel = () => {
                         </span>
 
                         <strong style="
-                            color: #063B3D;
+                            color: ${popupText};
                         ">
                             ৳ ${baseCharge.toFixed(2)}
                         </strong>
@@ -415,13 +421,13 @@ const SendParcel = () => {
                                 ">
 
                                     <span style="
-                                        color: #6b7280;
+                                        color: ${mutedText};
                                     ">
                                         Extra Weight Charge
                                     </span>
 
                                     <strong style="
-                                        color: #063B3D;
+                                        color: ${popupText};
                                     ">
                                         ৳ ${weightCharge.toFixed(2)}
                                     </strong>
@@ -447,13 +453,13 @@ const SendParcel = () => {
                                 ">
 
                                     <span style="
-                                        color: #6b7280;
+                                        color: ${mutedText};
                                     ">
                                         Different Service Center
                                     </span>
 
                                     <strong style="
-                                        color: #063B3D;
+                                        color: ${popupText};
                                     ">
                                         ৳ ${serviceCenterCharge.toFixed(
                         2
@@ -481,7 +487,7 @@ const SendParcel = () => {
                     ========================= -->
 
                     <div style="
-                        background: #f0fbd2;
+                        background: ${isDarkTheme ? "#263b32" : "#f0fbd2"};
                         border: 2px solid #C6EF4A;
                         border-radius: 12px;
                         padding: 16px;
@@ -499,7 +505,7 @@ const SendParcel = () => {
 
                                 <div style="
                                     font-size: 11px;
-                                    color: #527052;
+                                    color: ${isDarkTheme ? "#bbf7d0" : "#527052"};
                                     margin-bottom: 3px;
                                     font-weight: 700;
                                     letter-spacing: 0.5px;
@@ -510,7 +516,7 @@ const SendParcel = () => {
                                 <div style="
                                     font-size: 15px;
                                     font-weight: 700;
-                                    color: #063B3D;
+                                    color: ${popupText};
                                 ">
                                     Amount to Pay
                                 </div>
@@ -520,7 +526,7 @@ const SendParcel = () => {
                             <div style="
                                 font-size: 28px;
                                 font-weight: 800;
-                                color: #063B3D;
+                                color: ${popupText};
                                 white-space: nowrap;
                             ">
                                 ৳ ${deliveryCost}
@@ -538,7 +544,7 @@ const SendParcel = () => {
                     <p style="
                         text-align: center;
                         font-size: 12px;
-                        color: #9ca3af;
+                        color: ${mutedText};
                         margin-top: 14px;
                         margin-bottom: 0;
                     ">
@@ -570,11 +576,9 @@ const SendParcel = () => {
             cancelButtonColor:
                 "#ffffff",
 
-            color:
-                "#063B3D",
+            color: popupText,
 
-            background:
-                "#ffffff",
+            background: popupBackground,
 
             // =================================
             // SETTINGS
@@ -594,7 +598,7 @@ const SendParcel = () => {
                     "text-black font-semibold px-5 py-3",
 
                 cancelButton:
-                    "text-[#063B3D] font-semibold border border-gray-300 px-5 py-3",
+                    "text-base-content font-semibold border border-gray-300 px-5 py-3",
             },
 
         }).then((result) => {
@@ -621,14 +625,14 @@ const SendParcel = () => {
 
                                 html: `
                         <p style="
-                            color: #6b7280;
+                            color: ${mutedText};
                             font-size: 14px;
                         ">
                             Your total delivery cost is
                         </p>
 
                         <p style="
-                            color: #063B3D;
+                            color: ${popupText};
                             font-size: 30px;
                             font-weight: 800;
                             margin-top: 8px;
@@ -643,12 +647,12 @@ const SendParcel = () => {
                                 confirmButtonColor:
                                     "#C6EF4A",
 
-                                color:
-                                    "#063B3D",
+                                color: popupText,
+                                background: popupBackground,
 
                                 customClass: {
                                     confirmButton:
-                                        "text-black font-semibold",
+                                        "font-semibold",
                                 },
                             }).then(() => {
 
@@ -703,7 +707,7 @@ const SendParcel = () => {
     // =========================================
 
     return (
-        <section className="min-h-screen bg-base-200 py-10 md:py-16">
+        <section className="min-h-screen bg-base-200 py-10 md:py-16 font-sans text-base-content">
 
             <div className="max-w-6xl mx-auto px-4">
 
@@ -713,11 +717,11 @@ const SendParcel = () => {
 
                 <div className="mb-8">
 
-                    <h1 className="text-3xl md:text-4xl font-bold text-[#063B3D]">
+                    <h1 className="text-3xl md:text-4xl font-bold text-base-content">
                         Send A Parcel
                     </h1>
 
-                    <p className="mt-4 text-sm font-semibold text-[#063B3D]">
+                    <p className="mt-4 text-sm font-semibold text-base-content">
                         Enter your parcel details
                     </p>
 
@@ -741,7 +745,7 @@ const SendParcel = () => {
 
                     <div className="bg-base-100 p-5 md:p-6 rounded-xl">
 
-                        <h2 className="text-xl font-bold text-[#063B3D] mb-5">
+                        <h2 className="text-xl font-bold text-base-content mb-5">
                             Parcel Info
                         </h2>
 
@@ -762,7 +766,7 @@ const SendParcel = () => {
                                     className="radio radio-sm radio-success"
                                 />
 
-                                <span className="text-sm text-[#063B3D]">
+                                <span className="text-sm text-base-content">
                                     Document
                                 </span>
 
@@ -781,7 +785,7 @@ const SendParcel = () => {
                                     className="radio radio-sm radio-success"
                                 />
 
-                                <span className="text-sm text-[#063B3D]">
+                                <span className="text-sm text-base-content">
                                     Non-Document
                                 </span>
 
@@ -805,7 +809,7 @@ const SendParcel = () => {
 
                             <div>
 
-                                <label className="block text-sm font-medium text-[#063B3D] mb-2">
+                                <label className="block text-sm font-medium text-base-content mb-2">
                                     Parcel Name
                                 </label>
 
@@ -820,7 +824,7 @@ const SendParcel = () => {
                                         input
                                         input-bordered
                                         w-full
-                                        bg-white
+                                        bg-base-100 text-base-content border-base-300 placeholder:text-base-content/45 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 font-sans
                                     "
                                 />
 
@@ -840,7 +844,7 @@ const SendParcel = () => {
 
                             <div>
 
-                                <label className="block text-sm font-medium text-[#063B3D] mb-2">
+                                <label className="block text-sm font-medium text-base-content mb-2">
                                     Parcel Weight (KG)
                                 </label>
 
@@ -879,14 +883,14 @@ const SendParcel = () => {
                                         input
                                         input-bordered
                                         w-full
-                                        bg-white
-                                        disabled:bg-gray-100
+                                        bg-base-100 text-base-content border-base-300 placeholder:text-base-content/45 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 font-sans
+                                        disabled:bg-base-200 disabled:text-base-content/50
                                     "
                                 />
 
                                 {parcelType ===
                                     "document" && (
-                                        <p className="text-[11px] text-gray-400 mt-1">
+                                        <p className="text-[11px] text-base-content/50 mt-1">
                                             Weight is not required for documents.
                                         </p>
                                     )}
@@ -917,11 +921,11 @@ const SendParcel = () => {
 
                         <div className="bg-base-100 rounded-xl p-5 md:p-6">
 
-                            <h2 className="text-xl font-bold text-[#063B3D]">
+                            <h2 className="text-xl font-bold text-base-content">
                                 Sender Info
                             </h2>
 
-                            <p className="text-sm text-gray-500 mt-1 mb-5">
+                            <p className="text-sm text-base-content/70 mt-1 mb-5">
                                 Enter the pickup information.
                             </p>
 
@@ -950,7 +954,7 @@ const SendParcel = () => {
                                                     "Sender name is required",
                                             }
                                         )}
-                                        className="input input-bordered w-full bg-white"
+                                        className="input input-bordered bg-base-100 text-base-content border-base-300 placeholder:text-base-content/40 focus:border-primary focus:outline-none w-full bg-base-100 text-base-content border-base-300 placeholder:text-base-content/45 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 font-sans"
                                     />
 
                                     {errors.senderName && (
@@ -983,7 +987,7 @@ const SendParcel = () => {
                                                     "Sender contact is required",
                                             }
                                         )}
-                                        className="input input-bordered w-full bg-white"
+                                        className="input input-bordered bg-base-100 text-base-content border-base-300 placeholder:text-base-content/40 focus:border-primary focus:outline-none w-full bg-base-100 text-base-content border-base-300 placeholder:text-base-content/45 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 font-sans"
                                     />
 
                                     {errors.senderContact && (
@@ -1022,7 +1026,7 @@ const SendParcel = () => {
                                                 },
                                             }
                                         )}
-                                        className="select select-bordered w-full bg-white"
+                                        className="select select-bordered bg-base-100 text-base-content border-base-300 focus:border-primary focus:outline-none w-full bg-base-100 text-base-content border-base-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 font-sans"
                                     >
 
                                         <option value="">
@@ -1078,7 +1082,7 @@ const SendParcel = () => {
                                         disabled={
                                             !senderRegion
                                         }
-                                        className="select select-bordered w-full bg-white"
+                                        className="select select-bordered bg-base-100 text-base-content border-base-300 focus:border-primary focus:outline-none w-full bg-base-100 text-base-content border-base-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 font-sans"
                                     >
 
                                         <option value="">
@@ -1135,7 +1139,7 @@ const SendParcel = () => {
                                                     "Sender address is required",
                                             }
                                         )}
-                                        className="textarea textarea-bordered w-full bg-white"
+                                        className="textarea textarea-bordered bg-base-100 text-base-content border-base-300 placeholder:text-base-content/40 focus:border-primary focus:outline-none w-full bg-base-100 text-base-content border-base-300 placeholder:text-base-content/45 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 font-sans"
                                     />
 
                                     {errors.senderAddress && (
@@ -1169,7 +1173,7 @@ const SendParcel = () => {
                                                     "Pickup instruction is required",
                                             }
                                         )}
-                                        className="textarea textarea-bordered w-full bg-white"
+                                        className="textarea textarea-bordered bg-base-100 text-base-content border-base-300 placeholder:text-base-content/40 focus:border-primary focus:outline-none w-full bg-base-100 text-base-content border-base-300 placeholder:text-base-content/45 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 font-sans"
                                     />
 
                                     {errors.pickupInstruction && (
@@ -1195,11 +1199,11 @@ const SendParcel = () => {
 
                         <div className="bg-base-100 rounded-xl p-5 md:p-6">
 
-                            <h2 className="text-xl font-bold text-[#063B3D]">
+                            <h2 className="text-xl font-bold text-base-content">
                                 Receiver Info
                             </h2>
 
-                            <p className="text-sm text-gray-500 mt-1 mb-5">
+                            <p className="text-sm text-base-content/70 mt-1 mb-5">
                                 Enter the delivery information.
                             </p>
 
@@ -1224,7 +1228,7 @@ const SendParcel = () => {
                                                     "Receiver name is required",
                                             }
                                         )}
-                                        className="input input-bordered w-full bg-white"
+                                        className="input input-bordered bg-base-100 text-base-content border-base-300 placeholder:text-base-content/40 focus:border-primary focus:outline-none w-full bg-base-100 text-base-content border-base-300 placeholder:text-base-content/45 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 font-sans"
                                     />
 
                                     {errors.receiverName && (
@@ -1258,7 +1262,7 @@ const SendParcel = () => {
                                                     "Receiver contact is required",
                                             }
                                         )}
-                                        className="input input-bordered w-full bg-white"
+                                        className="input input-bordered bg-base-100 text-base-content border-base-300 placeholder:text-base-content/40 focus:border-primary focus:outline-none w-full bg-base-100 text-base-content border-base-300 placeholder:text-base-content/45 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 font-sans"
                                     />
 
                                     {errors.receiverContact && (
@@ -1297,7 +1301,7 @@ const SendParcel = () => {
                                                 },
                                             }
                                         )}
-                                        className="select select-bordered w-full bg-white"
+                                        className="select select-bordered bg-base-100 text-base-content border-base-300 focus:border-primary focus:outline-none w-full bg-base-100 text-base-content border-base-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 font-sans"
                                     >
 
                                         <option value="">
@@ -1353,7 +1357,7 @@ const SendParcel = () => {
                                         disabled={
                                             !receiverRegion
                                         }
-                                        className="select select-bordered w-full bg-white"
+                                        className="select select-bordered bg-base-100 text-base-content border-base-300 focus:border-primary focus:outline-none w-full bg-base-100 text-base-content border-base-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 font-sans"
                                     >
 
                                         <option value="">
@@ -1410,7 +1414,7 @@ const SendParcel = () => {
                                                     "Receiver address is required",
                                             }
                                         )}
-                                        className="textarea textarea-bordered w-full bg-white"
+                                        className="textarea textarea-bordered bg-base-100 text-base-content border-base-300 placeholder:text-base-content/40 focus:border-primary focus:outline-none w-full bg-base-100 text-base-content border-base-300 placeholder:text-base-content/45 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 font-sans"
                                     />
 
                                     {errors.receiverAddress && (
@@ -1444,7 +1448,7 @@ const SendParcel = () => {
                                                     "Delivery instruction is required",
                                             }
                                         )}
-                                        className="textarea textarea-bordered w-full bg-white"
+                                        className="textarea textarea-bordered bg-base-100 text-base-content border-base-300 placeholder:text-base-content/40 focus:border-primary focus:outline-none w-full bg-base-100 text-base-content border-base-300 placeholder:text-base-content/45 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 font-sans"
                                     />
 
                                     {errors.deliveryInstruction && (
@@ -1470,25 +1474,13 @@ const SendParcel = () => {
                         SUBMIT
                     ================================= */}
 
-                    <div className="flex justify-end">
-
+                    <div className="w-full">
                         <button
                             type="submit"
-                            className="
-                                px-8
-                                py-3
-                                rounded-md
-                                bg-[#C6EF4A]
-                                hover:bg-[#B9E83E]
-                                text-black
-                                font-semibold
-                                transition
-                                cursor-pointer
-                            "
+                            className="btn btn-primary w-full min-h-12 rounded-lg border-0 font-semibold shadow-sm transition-all duration-200 hover:brightness-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                         >
                             Submit Parcel
                         </button>
-
                     </div>
 
                 </form>

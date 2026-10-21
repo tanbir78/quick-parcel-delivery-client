@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router';
 import QuickLogo from './QuickLogo';
 import UseAuth from '../../hocks/UseAuth';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
     const { user, logOut } = UseAuth();
@@ -47,14 +48,20 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {
-                    user ?
-                        <button onClick={handleLogOut} className="btn">Log Out</button>
-                        : <Link className='btn' to="/login">Log in</Link>
-                }
-                {/* <Link
-                    className='btn btn-primary text-black mx-4'
-                    to="/rider">Be a Rider</Link> */}
+                <div className="flex items-center gap-3">
+                    <ThemeToggle />
+
+                    {
+                        user ?
+                            <button onClick={handleLogOut} className="btn">
+                                Log Out
+                            </button>
+                            :
+                            <Link className="btn" to="/login">
+                                Log in
+                            </Link>
+                    }
+                </div>
             </div>
         </div>
     );

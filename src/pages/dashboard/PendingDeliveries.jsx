@@ -1,16 +1,11 @@
-
 import { useCallback, useEffect, useState } from "react";
-import {
-    FaBox,
-    FaCheckCircle,
-    FaMapMarkerAlt,
-    FaPhone,
-    FaTruck,
-} from "react-icons/fa";
+import { FaBox, FaCheckCircle, FaMapMarkerAlt, FaPhone, FaTruck, } from "react-icons/fa";
 import Swal from "sweetalert2";
 import UseAxiosSecure from "../../hocks/UseAxiosSecure";
+import useTrackingLogger from "../../hocks/useTrackingLogger";
 
 const PendingDeliveries = () => {
+    const { logTracking } = useTrackingLogger();
     const axiosSecure = UseAxiosSecure();
 
     const [parcels, setParcels] = useState([]);
@@ -34,7 +29,7 @@ const PendingDeliveries = () => {
             Swal.fire(
                 "Error",
                 error.response?.data?.message ||
-                    "Failed to load delivery tasks.",
+                "Failed to load delivery tasks.",
                 "error"
             );
         } finally {
@@ -89,16 +84,38 @@ const PendingDeliveries = () => {
             await Swal.fire(
                 "Success",
                 res.data?.message ||
-                    "Delivery status updated successfully.",
+                "Delivery status updated successfully.",
                 "success"
             );
+            // const trackingRes = await logTracking({
+            //     parcelId: parcel._id,
+            //     trackingId: parcel.trackingId,
+            //     status: isInTransit ? "delivered" : "picked_up",
+            //     title: isInTransit ? "Parcel Delivered" : "Parcel Picked Up",
+            //     description: isInTransit
+            //         ? "Your parcel has been delivered successfully."
+            //         : "The rider has picked up your parcel.",
+            // });
+
+            // console.log("Tracking saved:", trackingRes);
+            //
+            await logTracking({
+                parcelId: parcel._id,
+                trackingId: parcel.trackingId,
+                status: isInTransit ? "delivered" : "picked_up",
+                title: isInTransit ? "Parcel Delivered" : "Parcel Picked Up",
+                description: isInTransit
+                    ? "Your parcel has been delivered successfully."
+                    : "The rider has picked up your parcel.",
+            });
+
         } catch (error) {
             console.error("Status update failed:", error);
 
             Swal.fire(
                 "Update Failed",
                 error.response?.data?.message ||
-                    "Could not update delivery status.",
+                "Could not update delivery status.",
                 "error"
             );
         } finally {
@@ -282,11 +299,10 @@ const PendingDeliveries = () => {
                                                 </span>
                                             ) : (
                                                 <button
-                                                    className={`btn btn-sm ${
-                                                        isInTransit
-                                                            ? "btn-success"
-                                                            : "btn-primary"
-                                                    }`}
+                                                    className={`btn btn-sm ${isInTransit
+                                                        ? "btn-success"
+                                                        : "btn-primary"
+                                                        }`}
                                                     disabled={
                                                         updatingId !== null
                                                     }
@@ -297,7 +313,7 @@ const PendingDeliveries = () => {
                                                     }
                                                 >
                                                     {updatingId ===
-                                                    parcel._id ? (
+                                                        parcel._id ? (
                                                         <span className="loading loading-spinner loading-xs" />
                                                     ) : isInTransit ? (
                                                         <FaCheckCircle />

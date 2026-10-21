@@ -1,16 +1,11 @@
-
 import { useEffect, useState } from "react";
-import {
-    FaBox,
-    FaMotorcycle,
-    FaTimes,
-    FaMapMarkerAlt,
-    FaUser,
-} from "react-icons/fa";
+import { FaBox, FaMotorcycle, FaTimes, FaMapMarkerAlt, FaUser, } from "react-icons/fa";
 import Swal from "sweetalert2";
 import UseAxiosSecure from "../../hocks/UseAxiosSecure";
+import useTrackingLogger from "../../hocks/useTrackingLogger";
 
 const AssignRider = () => {
+    const { logTracking } = useTrackingLogger();
     const axiosSecure = UseAxiosSecure();
 
     const [parcels, setParcels] = useState([]);
@@ -153,6 +148,20 @@ const AssignRider = () => {
                     "Parcel assigned successfully.",
                 icon: "success",
             });
+            // 
+            await logTracking({
+                parcelId: selectedParcel._id,
+                trackingId: selectedParcel.trackingId,
+                status: "assigned",
+                title: "Rider Assigned",
+                description: "A rider has been assigned to your parcel.",
+
+                riderName: rider.name || "",
+                riderEmail: rider.email || "",
+                riderPhone: rider.phone || rider.phoneNumber || "",
+                location: selectedParcel.receiverServiceCenter || "",
+            });
+
         } catch (error) {
             console.error("Assign rider error:", error);
 

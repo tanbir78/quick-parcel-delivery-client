@@ -663,16 +663,16 @@ const SendParcel = () => {
                                  */
                             });
 
-                            // await logTracking({
-                            //     parcelId: res.data.insertedId,
-                            //     trackingId: parcelData.trackingId,
-                            //     status: "submitted",
-                            //     title: "Parcel Submitted",
-                            //     description: "Your parcel has been successfully submitted.",
-                            //     actorRole: "user",
-                            // });
-
                             navigate("/dashboard/myParcels");
+
+                            await logTracking({
+                                parcelId: res.data.insertedId,
+                                trackingId: parcelData.trackingId,
+                                status: "submitted",
+                                title: "Parcel Submitted",
+                                description: "Your parcel has been successfully submitted.",
+                                actorRole: "user",
+                            });
                         }
                     })
                     .catch((error) => {

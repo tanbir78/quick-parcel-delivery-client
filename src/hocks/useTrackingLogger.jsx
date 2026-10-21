@@ -12,20 +12,28 @@ const useTrackingLogger = () => {
         title,
         description,
         actorRole = "system",
+        riderName,
+        riderEmail,
+        riderPhone,
+        location,
     }) => {
         setLoading(true);
 
         try {
-            const response = await axiosSecure.post("/tracking", {
+            const { data } = await axiosSecure.post("/tracking", {
                 parcelId,
                 trackingId,
                 status,
                 title,
                 description,
                 actorRole,
+                riderName,
+                riderEmail,
+                riderPhone,
+                location,
             });
 
-            return response.data;
+            return data;
         } finally {
             setLoading(false);
         }

@@ -5,8 +5,10 @@ import UseAxiosSecure from '../../hocks/UseAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import UseAuth from '../../hocks/UseAuth';
 import Swal from 'sweetalert2';
+import useTrackingLogger from '../../hocks/useTrackingLogger';
 
 const PaymentForm = () => {
+    const { logTracking } = useTrackingLogger();
     const stripe = useStripe();
     const elements = useElements();
     const axiosSecure = UseAxiosSecure();
@@ -85,6 +87,15 @@ const PaymentForm = () => {
                 if (paymentRes.data.success) {
                     console.log("Payment history saved successfully");
 
+                    // parcel track
+                    await logTracking({
+                        parcelId: parcel._id,
+                        trackingId: parcel.trackingId,
+                        status: "paid",
+                        title: "Payment Completed",
+                        description: "Payment has been confirmed.",
+                    });
+
                     Swal.fire({
                         icon: "success",
                         title: "Payment Successful!",
@@ -109,7 +120,6 @@ const PaymentForm = () => {
 
             console.log("res from intent", res);
         }
-
     }
 
     return (

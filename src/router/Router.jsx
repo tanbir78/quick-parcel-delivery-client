@@ -154,10 +154,6 @@ export const router = createBrowserRouter([
                     <MakeAdmin></MakeAdmin>
                 </AdminRoute>
             },
-            // {
-            //     path: "update-tracking",
-            //     Component: UpdateTracking
-            // }
         ]
     }
 ]);

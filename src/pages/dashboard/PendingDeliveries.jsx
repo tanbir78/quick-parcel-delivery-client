@@ -87,19 +87,7 @@ const PendingDeliveries = () => {
                 "Delivery status updated successfully.",
                 "success"
             );
-            // const trackingRes = await logTracking({
-            //     parcelId: parcel._id,
-            //     trackingId: parcel.trackingId,
-            //     status: isInTransit ? "delivered" : "picked_up",
-            //     title: isInTransit ? "Parcel Delivered" : "Parcel Picked Up",
-            //     description: isInTransit
-            //         ? "Your parcel has been delivered successfully."
-            //         : "The rider has picked up your parcel.",
-            // });
-
-            // console.log("Tracking saved:", trackingRes);
-            //
-            await logTracking({
+            const trackingRes = await logTracking({
                 parcelId: parcel._id,
                 trackingId: parcel.trackingId,
                 status: isInTransit ? "delivered" : "picked_up",
@@ -108,6 +96,8 @@ const PendingDeliveries = () => {
                     ? "Your parcel has been delivered successfully."
                     : "The rider has picked up your parcel.",
             });
+
+            // console.log("Tracking saved:", trackingRes);
 
         } catch (error) {
             console.error("Status update failed:", error);

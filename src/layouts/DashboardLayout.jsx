@@ -41,6 +41,7 @@ const DashboardLayout = () => {
             <div className="drawer-side">
                 <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
                 <ul className="menu bg-base-200 min-h-full w-80 p-4">
+
                     {/* Sidebar content here */}
                     <QuickLogo></QuickLogo>
 
@@ -51,19 +52,24 @@ const DashboardLayout = () => {
                         </NavLink>
                     </li>
 
-                    <li>
-                        <NavLink to="/dashboard/myParcels">
-                            <FaBoxOpen className="inline mr-2 text-orange-500 text-xl" />
-                            My Parcels
-                        </NavLink>
-                    </li>
+                    {/* user links */}
+                    {!roleLoading && role === "user" &&
+                        <>
+                            <li>
+                                <NavLink to="/dashboard/myParcels">
+                                    <FaBoxOpen className="inline mr-2 text-orange-500 text-xl" />
+                                    My Parcels
+                                </NavLink>
+                            </li>
 
-                    <li>
-                        <NavLink to="/dashboard/paymentHistory">
-                            <FaMoneyBillTransfer className="inline mr-2 text-emerald-500 text-xl" />
-                            Payment History
-                        </NavLink>
-                    </li>
+                            <li>
+                                <NavLink to="/dashboard/paymentHistory">
+                                    <FaMoneyBillTransfer className="inline mr-2 text-emerald-500 text-xl" />
+                                    Payment History
+                                </NavLink>
+                            </li>
+                        </>
+                    }
 
                     <li>
                         <NavLink to="/dashboard/track">
@@ -78,14 +84,6 @@ const DashboardLayout = () => {
                             Update Tracking
                         </NavLink>
                     </li> */}
-
-
-                    <li>
-                        <NavLink to="/dashboard/profile">
-                            <FaRegUser className="inline mr-2 text-pink-500 text-xl" />
-                            Update Profile
-                        </NavLink>
-                    </li>
 
                     {/* riders links */}
                     {!roleLoading && role === "rider" &&
@@ -143,6 +141,14 @@ const DashboardLayout = () => {
                             </li>
                         </>
                     }
+
+                    <li>
+                        <NavLink to="/dashboard/profile">
+                            <FaRegUser className="inline mr-2 text-pink-500 text-xl" />
+                            Update Profile
+                        </NavLink>
+                    </li>
+                    
                 </ul>
             </div>
         </div>

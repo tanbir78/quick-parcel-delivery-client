@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, Outlet } from 'react-router';
 import QuickLogo from '../pages/shared/QuickLogo';
 import { FaHouse, FaBoxOpen, FaMoneyBillTransfer, FaMapLocationDot, FaRegUser } from "react-icons/fa6";
-import { FaMotorcycle, FaRoute, FaUserClock, FaUsersCog } from 'react-icons/fa';
+import { FaCheckCircle, FaMoneyBillWave, FaMotorcycle, FaRoute, FaTasks, FaUserClock, FaUsersCog } from 'react-icons/fa';
 import UseUserRole from '../hocks/UseUserRole';
 
 const DashboardLayout = () => {
@@ -88,6 +88,30 @@ const DashboardLayout = () => {
                     </li>
 
                     {/* riders links */}
+                    {!roleLoading && role === "rider" &&
+                        <>
+                            <li>
+                                <NavLink to="/dashboard/my-deliveries">
+                                    <FaTasks className="inline mr-2 text-blue-500 text-xl" />
+                                    My Deliveries
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/completed-deliveries">
+                                    <FaCheckCircle className="inline mr-2 text-green-500 text-xl" />
+                                    Completed Deliveries
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/my-earning">
+                                    <FaMoneyBillWave className="inline mr-2 text-green-500 text-xl" />
+                                    My Earnings
+                                </NavLink>
+                            </li>
+                        </>
+                    }
+
+                    {/* admin links */}
                     {!roleLoading && role === "admin" &&
                         <>
                             <li>

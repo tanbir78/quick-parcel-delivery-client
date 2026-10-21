@@ -4,9 +4,12 @@ import Swal from "sweetalert2";
 import warehousesData from "../../data/warehouses.json";
 import UseAuth from "../../hocks/UseAuth";
 import UseAxiosSecure from "../../hocks/UseAxiosSecure";
+import { useNavigate } from "react-router";
+import useTrackingLogger from "../../hocks/useTrackingLogger";
 
 const SendParcel = () => {
     const { user } = UseAuth();
+    const { logTracking } = useTrackingLogger();
 
     const {
         register,
@@ -37,6 +40,7 @@ const SendParcel = () => {
     });
 
     const axiosSecure = UseAxiosSecure();
+    const navigate = useNavigate();
 
     const parcelType = useWatch({
         control,
@@ -53,10 +57,6 @@ const SendParcel = () => {
         name: "receiverRegion",
     });
 
-    // =========================================
-    // REGIONS
-    // =========================================
-
     const regions = [
         ...new Set(
             warehousesData
@@ -64,10 +64,6 @@ const SendParcel = () => {
                 .map((item) => item.region)
         ),
     ];
-
-    // =========================================
-    // SENDER SERVICE CENTERS
-    // =========================================
 
     const senderCenters = senderRegion
         ? warehousesData
@@ -78,10 +74,6 @@ const SendParcel = () => {
             )
             .map((item) => item.district)
         : [];
-
-    // =========================================
-    // RECEIVER SERVICE CENTERS
-    // =========================================
 
     const receiverCenters = receiverRegion
         ? warehousesData
@@ -304,17 +296,6 @@ const SendParcel = () => {
             ],
         };
 
-        // =====================================
-        // TEMPORARY
-        // =====================================
-        // এখন DB নেই।
-        // Browser console এ data দেখতে পারবে।
-
-        // console.log("Parcel Data:", parcelData);
-
-        // =====================================
-        // SWEET ALERT
-        // =====================================
 
         Swal.fire({
             title: "Review Your Parcel",
@@ -628,10 +609,10 @@ const SendParcel = () => {
 
                 // save data to the server
                 axiosSecure.post("/parcels", parcelData)
-                    .then((res) => {
+
+                    .then(async (res) => {
                         console.log("Parcel saved:", res.data);
                         //here you could redirect to a payment page 
-                        
                         if (res.data.insertedId) {
                             Swal.fire({
                                 icon: "info",
@@ -681,6 +662,17 @@ const SendParcel = () => {
                                  * the parcel data.
                                  */
                             });
+
+                            // await logTracking({
+                            //     parcelId: res.data.insertedId,
+                            //     trackingId: parcelData.trackingId,
+                            //     status: "submitted",
+                            //     title: "Parcel Submitted",
+                            //     description: "Your parcel has been successfully submitted.",
+                            //     actorRole: "user",
+                            // });
+
+                            navigate("/dashboard/myParcels");
                         }
                     })
                     .catch((error) => {
@@ -689,8 +681,6 @@ const SendParcel = () => {
                             error
                         );
                     });
-
-
             }
 
             // =================================

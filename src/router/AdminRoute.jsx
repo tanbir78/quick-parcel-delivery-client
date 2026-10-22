@@ -1,21 +1,34 @@
-import React, { Children } from 'react';
-import UseAuth from '../hocks/UseAuth';
-import UseUserRole from '../hocks/UseUserRole';
-import { Navigate } from 'react-router';
+
+import UseAuth from "../hocks/UseAuth";
+import UseUserRole from "../hocks/UseUserRole";
+import { Navigate, useLocation } from "react-router";
 
 const AdminRoute = ({ children }) => {
     const { user, loading } = UseAuth();
-    const { role, roleLoading } = UseUserRole();
+    const { role, roleLoading, error } = UseUserRole();
+    const location = useLocation();
 
     if (loading || roleLoading) {
-        return <span className="loading loading-spinner loading-xs"></span>
+        return (
+            <span className="loading loading-spinner loading-xs"></span>
+        );
     }
 
-    if (!user || role !== "admin") {
-        return <Navigate state={{ from: location.pathname }} to='/forbidden'></Navigate>
+    if (!user) {
+        return (
+            <Navigate
+                to="/login"
+                state={{ from: location }}
+                replace
+            />
+        );
     }
 
-    return children
+    if (error || role !== "admin") {
+        return <Navigate to="/forbidden" replace />;
+    }
+
+    return children;
 };
 
 export default AdminRoute;

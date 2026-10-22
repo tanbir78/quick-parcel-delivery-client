@@ -45,9 +45,6 @@ export const router = createBrowserRouter([
                 path: 'about', Component: AboutUs
             },
             {
-                path: "forbidden", Component: Forbidden
-            },
-            {
                 path: 'beARider',
                 element: <PrivateRoute><BeARider></BeARider></PrivateRoute>,
                 // loader: () => fetch('./warehouses.json')
@@ -83,6 +80,10 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 Component: DashboardHome
+            },
+            {
+                path: "forbidden",
+                Component: Forbidden
             },
             {
                 path: 'myParcels',

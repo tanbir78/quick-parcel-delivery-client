@@ -5,7 +5,7 @@ import { getAuth } from 'firebase/auth';
 import UseAuth from './UseAuth';
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://quick-parcels.vercel.app',
 });
 
 const useAxiosSecure = () => {
